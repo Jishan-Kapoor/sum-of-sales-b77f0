@@ -22,7 +22,16 @@
 <body>
     <div class="container">
         <h1>Sales Summary</h1>
+       
         <div id="total-sales"></div>
+        
+        <select id="currency-picker">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+        </select>
+        
+        <span id="total-currency"></span>
     </div>
 
     <script>
@@ -41,6 +50,18 @@
                 if (!isNaN(total)) {
                     document.getElementById('total-sales').textContent = 'Total Sales: $' + total.toFixed(2);
                 }
+                
+                fetch('rates.json')
+                    .then(response => response.json())
+                    .then(rates => {
+                        document.getElementById('currency-picker').addEventListener('change', function() {
+                            const selectedCurrency = this.value;
+                            const rate = rates[selectedCurrency];
+                            const convertedTotal = (total * rate).toFixed(2);
+                            document.getElementById('total-sales').textContent = 'Total Sales: ' + selectedCurrency + ' ' + convertedTotal;
+                            document.getElementById('total-currency').textContent = '(' + selectedCurrency + ')';
+                        });
+                    });
             });
     </script>
     
