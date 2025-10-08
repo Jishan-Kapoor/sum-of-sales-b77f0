@@ -1,21 +1,24 @@
 # Sales Summary Web App
 
 ## Summary
-The Sales Summary Web App is a static single-page site that fetches data from a CSV file, calculates the total sales, and displays the result on the page. The site is titled "Sales Summary 731cade2" and utilizes Bootstrap 5 for styling.
+The Sales Summary Web App is a static single-page site that fetches data from a CSV file, calculates the total sales, and displays the result on the page. The site is titled "Sales Summary 731cade2" and utilizes Bootstrap 5 for styling. In this update, a new feature has been added: a currency select `#currency-picker` that converts the computed total using rates from `rates.json` and mirrors the active currency inside `#total-currency`.
 
 ## Setup
 To deploy the Sales Summary Web App on GitHub Pages, follow these steps:
 1. Create a new repository on GitHub.
-2. Upload the necessary HTML, CSS, JavaScript files, and the `data.csv` file.
+2. Upload the necessary HTML, CSS, JavaScript files, the `data.csv` file, and the `rates.json` file.
 3. Enable GitHub Pages for the repository and select the main branch as the source.
 
 ## Usage
 - Access the page by navigating to the GitHub Pages URL for the deployed site.
-- There are no query parameters or configuration options needed.
+- There are no query parameters needed.
 - Key features include:
   - Fetching data from `data.csv`.
   - Calculating the total sales.
   - Displaying the total inside `#total-sales`.
+  - Converting the total using rates from `rates.json`.
+  - Selecting currency with `#currency-picker`.
+  - Mirroring the active currency inside `#total-currency`.
   - Using Bootstrap 5 for styling.
 
 ## Code Explanation
@@ -31,6 +34,8 @@ The web app is built using HTML, JavaScript, and CSS. Bootstrap 5 is added to th
 </head>
 <body>
     <div id="total-sales"></div>
+    <select id="currency-picker"></select>
+    <div id="total-currency"></div>
     <script src="app.js"></script>
 </body>
 </html>
